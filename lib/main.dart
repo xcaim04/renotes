@@ -5,10 +5,6 @@ import 'screens/home_shell.dart';
 import 'theme/app_theme.dart';
 import 'widgets/app_scope.dart';
 
-/// Punto de entrada de ReNotes.
-///
-/// La app no tiene servidor ni base de datos: todo vive en memoria durante la
-/// sesión, así que [AppStore] se crea aquí y se expone con [AppScope].
 void main() {
   runApp(const ReNotesApp());
 }
@@ -21,8 +17,7 @@ class ReNotesApp extends StatefulWidget {
 }
 
 class _ReNotesAppState extends State<ReNotesApp> {
-  // El store se crea una vez y sobrevive a los reconstrucciones del widget raíz,
-  // de modo que las pestañas conserven su posición y sus filtros.
+  
   late final AppStore _store = AppStore();
 
   @override

@@ -1,8 +1,3 @@
-/// Formateo de fechas en español sin depender de `intl`.
-///
-/// La app es deliberadamente pequeña: basta con mes abreviado, día de dos
-/// dígitos y hora cuando la precisión ayuda a distinguir dos ediciones del
-/// mismo día.
 library;
 
 const List<String> _mesesCortos = <String>[
