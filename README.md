@@ -4,6 +4,34 @@ Aplicación Android de notas académicas con proyectos, búsqueda global y
 etiquetas. Todo el estado vive en memoria durante la sesión: no hay servidor,
 autenticación ni base de datos.
 
+<p align="center">
+  <img src="docs/images/renotes_logo.png" alt="Logotipo de ReNotes" width="180">
+</p>
+
+## Diseño
+
+Los.mockups son de Stitch y se corresponden una a uno con las pantallas
+implementadas. Los archivos viven en [`docs/images/`](docs/images).
+
+### Tema claro · Academic Indigo
+
+| Proyectos | Notas del proyecto | Detalle de nota |
+| --- | --- | --- |
+| <img src="docs/images/proyectos_principal.png" alt="Pantalla de proyectos" width="240"> | <img src="docs/images/notas_del_proyecto.png" alt="Notas del proyecto" width="240"> | <img src="docs/images/detalle_de_nota.png" alt="Detalle de nota" width="240"> |
+
+| Editor de nota | Etiquetas | Buscar |
+| --- | --- | --- |
+| <img src="docs/images/editor_de_nota.png" alt="Editor de nota" width="240"> | <img src="docs/images/etiquetas.png" alt="Pantalla de etiquetas" width="240"> | <img src="docs/images/buscar.png" alt="Búsqueda global" width="240"> |
+
+### Tema oscuro · ReNotes Dark Academia
+
+| Proyectos | Notas del proyecto | Detalle de nota | Editor de nota |
+| --- | --- | --- | --- |
+| <img src="docs/images/proyectos_modo_oscuro.png" alt="Proyectos en modo oscuro" width="200"> | <img src="docs/images/notas_del_proyecto_modo_oscuro.png" alt="Notas del proyecto en modo oscuro" width="200"> | <img src="docs/images/detalle_de_nota_modo_oscuro.png" alt="Detalle de nota en modo oscuro" width="200"> | <img src="docs/images/editor_de_nota_modo_oscuro.png" alt="Editor de nota en modo oscuro" width="200"> |
+
+Los.mockups de etiquetas y búsqueda se muestran sólo en tema claro porque el
+resto de la app comparte componentes con las pantallas anteriores.
+
 ## Requisitos
 
 - Flutter 3.44.9 (Dart 3.12.2)
@@ -94,3 +122,47 @@ El conmutador de la barra superior alterna entre el tema claro *Academic Indigo*
 y el oscuro *ReNotes Dark Academia*. El color de cada etiqueta se deriva de su
 id con `TagPalette.of`, así que se mantiene entre temas y pantallas. Las fuentes
 Inter, Newsreader y JetBrains Mono van empaquetadas en `assets/fonts/`.
+
+### Paletas de colores
+
+Definidas en `lib/theme/app_theme.dart`. Los códigos coinciden con los
+`DESIGN.md` de cada tema.
+
+**Academic Indigo (claro)**
+
+| Rol | Hex | Rol | Hex |
+| --- | --- | --- | --- |
+| Primary | `#3F51B5` | Primary container | `#E8EAF6` |
+| Primary pulsado | `#303F9F` | On primary container | `#1A237E` |
+| Superficie | `#F7F8FC` | Tarjeta | `#FFFFFF` |
+| Campo / barra | `#EEF0F8` | Divisor | `#E0E2EC` |
+| On surface | `#191C20` | On surface variant | `#44474E` |
+| Texto sutil | `#74777F` | Error | `#BA1A1A` |
+
+**ReNotes Dark Academia (oscuro)**
+
+| Rol | Hex | Rol | Hex |
+| --- | --- | --- | --- |
+| Lienzo | `#121316` | Superficie baja | `#1A1B20` |
+| Panel | `#202228` | Tarjeta | `#1F1F23` |
+| Campo | `#16171C` | Línea | `#2C2E38` |
+| On surface | `#E2E2E6` | On surface variant | `#C4C6D0` |
+| Texto sutil | `#8E9099` | Primary | `#9FA8DA` |
+| Secondary | `#7986CB` | Error | `#FFB4AB` |
+
+**Paleta de etiquetas** (8 pares, mismo orden en ambos temas)
+
+| # | Color | Contenedor claro | Tinta clara | Contenedor oscuro | Tinta oscura |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Teal | `#E0F2F1` | `#00695C` | `#122826` | `#80CBC4` |
+| 2 | Amber | `#FFF8E1` | `#F57F17` | `#2C2413` | `#FFE082` |
+| 3 | Coral | `#FFEBEE` | `#C62828` | `#2F1918` | `#FFAB91` |
+| 4 | Violet | `#F3E5F5` | `#6A1B9A` | `#24182E` | `#CE93D8` |
+| 5 | Green | `#E8F5E9` | `#2E7D32` | `#16281B` | `#A5D6A7` |
+| 6 | Blue | `#E3F2FD` | `#1565C0` | `#132236` | `#90CAF9` |
+| 7 | Pink | `#FCE4EC` | `#AD1457` | `#2E1422` | `#F48FB1` |
+| 8 | Orange | `#FFF3E0` | `#E65100` | `#2D1C13` | `#FFCC80` |
+
+El índice sale de un hash del id de la etiqueta (`TagPalette.of`), no de su
+posición en la lista, así que una etiqueta conserva su color aunque el catálogo
+se reordene.
